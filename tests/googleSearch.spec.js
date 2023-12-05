@@ -1,16 +1,12 @@
 
 import { test, expect } from '@playwright/test';
 
-const uaParser = require('ua-parser-js');
-
-
 
 test.describe('Google Search: Access the second result item in a new tab.', () => {
 
   let SEARCH_KEY = 'selenium';
   let URL_WITH_PARAMETER_KEY = `./search?q=${SEARCH_KEY}`;
   let SEARCH_BUTTON_NAME = 'Google Search';
-  let GOOGLE_PAGE_TITLE = 'Google';
   let GOOGLE_SEARCH_PAGE_TITLE_EN = `${SEARCH_KEY} - Google Search`;
 
 
