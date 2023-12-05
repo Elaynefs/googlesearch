@@ -1,6 +1,9 @@
 
 import { test, expect } from '@playwright/test';
 
+const uaParser = require('ua-parser-js');
+
+
 
 test.describe('Google Search: Access the second result item in a new tab.', () => {
 
@@ -26,7 +29,7 @@ test.describe('Google Search: Access the second result item in a new tab.', () =
     const [newtab] = await Promise.all([
       page.context().waitForEvent('page'),
       page.keyboard.press('Control'),
-      page.locator('a >> h3:visible').nth(1).click({ button: 'middle' })
+      page.locator('a >> h3:visible').nth(1).click( { modifiers: ['Meta'] })
     ]);
 
     expect(page).toHaveTitle(`${GOOGLE_SEARCH_PAGE_TITLE_EN}`);
@@ -36,18 +39,23 @@ test.describe('Google Search: Access the second result item in a new tab.', () =
 
   test('Searching by url parameter', async ({ page }) => {
     await page.goto(URL_WITH_PARAMETER_KEY);
-    expect(page.url()).toContain('');
     let elementText = await page.locator('a >> h3:visible').nth(1).textContent();
 
     const [newtab] = await Promise.all([
       page.context().waitForEvent('page'),
       page.keyboard.press('Control'),
-      page.locator('a >> h3:visible').nth(1).click({ button: 'middle' })
+      page.locator('a >> h3:visible').nth(1).click( { modifiers: ['Meta'] })
     ]);
     
-    expect(page).toHaveTitle(`${GOOGLE_SEARCH_PAGE_TITLE_EN}`);
-    expect(elementText).toContain(await newtab.title());
+     expect(page).toHaveTitle(`${GOOGLE_SEARCH_PAGE_TITLE_EN}`);
+     expect(elementText).toContain(await newtab.title());
+
   });
 
 
+
+
+
 })
+
+
