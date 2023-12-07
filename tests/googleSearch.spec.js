@@ -46,8 +46,7 @@ test.describe('Google Search: Access the second result item in a new tab.', () =
       page.keyboard.down('Control'),
       page.locator('a >> h3:visible').nth(1).click({ modifiers: ['Meta'] })
     ]);   
-    await newtab.waitForLoadState('domcontentloaded');
-    await newtab.waitForSelector('h1');
+    
     let pageTitle = await page.title();
     let newTabTitle = (await newtab.title()).substring(0, 10);
     expect(pageTitle).toContain(`${GOOGLE_SEARCH_PAGE_TITLE_EN}`);
