@@ -14,6 +14,7 @@ module.exports = defineConfig({
   testDir: './tests',
 
   timeout: 20000,
+  
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -31,6 +32,8 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    ignoreHTTPSErrors: true
   },
 
   /* Configure projects for major browsers */
