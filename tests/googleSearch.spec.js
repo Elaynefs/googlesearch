@@ -28,11 +28,12 @@ test.describe('Google Search: Access the second result item in a new tab.', () =
       page.locator('a >> h3:visible').nth(1).click({ modifiers: ['Meta'] })
     ]);
 
+    await newtab.waitForLoadState('domcontentloaded');
+    await newtab.waitForSelector('h1');
     let newTabTitle = (await newtab.title()).substring(0, 10);
     let pageTitle = await page.title();
     expect(pageTitle).toContain(`${GOOGLE_SEARCH_PAGE_TITLE_EN}`);
     expect(secondSearchedItem).toContain(newTabTitle);
-
   });
 
   test('Searching by url parameter', async ({ context }) => {
@@ -44,15 +45,13 @@ test.describe('Google Search: Access the second result item in a new tab.', () =
       context.waitForEvent('page'),
       page.keyboard.down('Control'),
       page.locator('a >> h3:visible').nth(1).click({ modifiers: ['Meta'] })
-    ]);
-
-    
-    await newtab.waitForLoadState('domcontentloaded', { timeout: 10000 });
+    ]);   
+    await newtab.waitForLoadState('domcontentloaded');
+    await newtab.waitForSelector('h1');
     let pageTitle = await page.title();
     let newTabTitle = (await newtab.title()).substring(0, 10);
     expect(pageTitle).toContain(`${GOOGLE_SEARCH_PAGE_TITLE_EN}`);
     expect(secondSearchedItem).toContain(newTabTitle);
-
   });
 
 
