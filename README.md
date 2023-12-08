@@ -23,7 +23,7 @@
 
 The playwright framework is being used to implement the e2e test. For more information, please visit https://playwright.dev/docs. 
 
-I want to inform you that for this experiment I have decided to use Application Actions instead of Page Object Patterns because we are not using the same element locators across different scripts. For this reason, I am just using constants to keep the page test info clear and easy to maintain. For more information, please visit https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions.
+I added the Page Object Patterns, as required. 
 
 Additionally, I added the commands below to visualize the new tab being loaded. However, it might make the test slow. So, I added it only to the first scenario. 
 <code>
